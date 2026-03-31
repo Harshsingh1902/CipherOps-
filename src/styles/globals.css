@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Brand colors */
+  --color-rose: #ff6b8a;
+  --color-rose-soft: #ffb3c1;
+  --color-rose-deep: #c9184a;
+  --color-luna: #d946ef;
+  --color-luna-soft: #f0abfc;
+  --color-luna-deep: #a21caf;
+  --color-violet: #818cf8;
+
+  /* Surface colors */
+  --surface-0: #080810;
+  --surface-1: #0d0d1a;
+  --surface-2: #13131f;
+  --surface-3: #1a1a2e;
+  --surface-4: #202038;
+  --surface-5: #2a2a45;
+
+  /* Text */
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-tertiary: rgba(255, 255, 255, 0.4);
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  /* Glow effects */
+  --glow-rose: 0 0 40px rgba(255, 107, 138, 0.25);
+  --glow-luna: 0 0 40px rgba(217, 70, 239, 0.2);
+  --glow-violet: 0 0 40px rgba(129, 140, 248, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--surface-0);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 138, 0.4);
+}
+
+/* Selection */
+::selection {
+  background: rgba(217, 70, 239, 0.3);
+  color: white;
+}
+
+/* Glass morphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-default);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid var(--border-strong);
+}
+
+/* Card styles */
+.card {
+  background: linear-gradient(135deg, rgba(255, 107, 138, 0.05) 0%, rgba(217, 70, 239, 0.05) 100%);
+  border: 1px solid var(--border-default);
+  border-radius: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  border-color: rgba(255, 107, 138, 0.25);
+  box-shadow: 0 8px 40px rgba(255, 107, 138, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #ff6b8a 0%, #d946ef 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-rose {
+  background: linear-gradient(135deg, #ff6b8a 0%, #ffb3c1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer effect */
+.shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgba(255, 255, 255, 0.08) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Orb decorations */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-rose {
+  background: radial-gradient(circle, #ff6b8a, transparent);
+}
+
+.orb-luna {
+  background: radial-gradient(circle, #d946ef, transparent);
+}
+
+.orb-violet {
+  background: radial-gradient(circle, #818cf8, transparent);
+}
+
+/* Input styles */
+.input-dark {
+  background: var(--surface-3);
+  border: 1px solid var(--border-default);
+  border-radius: 0.75rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.input-dark:focus {
+  outline: none;
+  border-color: rgba(255, 107, 138, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 107, 138, 0.1);
+}
+
+.input-dark::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* Button variants */
+.btn-primary {
+  background: linear-gradient(135deg, #ff6b8a 0%, #d946ef 100%);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(255, 107, 138, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 30px rgba(255, 107, 138, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Cycle ring animation */
+@keyframes cycle-ring {
+  from { stroke-dashoffset: 502; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Chat bubble */
+.chat-bubble-user {
+  background: linear-gradient(135deg, #ff6b8a 0%, #d946ef 100%);
+  border-radius: 1.25rem 1.25rem 0.25rem 1.25rem;
+}
+
+.chat-bubble-ai {
+  background: var(--surface-3);
+  border: 1px solid var(--border-default);
+  border-radius: 1.25rem 1.25rem 1.25rem 0.25rem;
+}
+
+/* Pulse animation for voice */
+@keyframes voice-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+.voice-active {
+  animation: voice-pulse 1.5s ease-in-out infinite;
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-3) 25%, var(--surface-4) 50%, var(--surface-3) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 0.5rem;
+}
